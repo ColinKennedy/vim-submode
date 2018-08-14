@@ -142,9 +142,10 @@ endfunction
 
 
 
-function! submode#leave_with(submode, modes, options, lhs)  "{{{2
+function! submode#leave_with(submode, modes, options, lhs, ...)  "{{{2
+  let l:rhs = 0 < a:0 ? a:1 : '<Nop>'
   let options = substitute(a:modes, 'e', '', 'g')  " <Nop> is not expression.
-  return submode#map(a:submode, a:modes, options . 'x', a:lhs, '<Nop>')
+  return submode#map(a:submode, a:modes, options . 'x', a:lhs, l:rhs)
 endfunction
 
 
